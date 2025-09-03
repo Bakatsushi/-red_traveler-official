@@ -4,8 +4,7 @@ if global.levelUp == true {
 	exit;
 }
 
-// Colisão entre inimigos
-var _push = 1.1;
+var _push = 20;
 
 var _dir = point_direction(other.x, other.y, x, y);
 var _hspd = lengthdir_x(_push, _dir);

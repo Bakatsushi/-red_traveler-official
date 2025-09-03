@@ -44,4 +44,15 @@ if global.exp >= global.exp_max {
 	global.levelUp = true;
 	
 	global.exp_max = global.exp_max + 10 + global.exp_max * .1;
+	
+	upgrade_list = ds_list_create();
+	repeat(upgrade_num){
+		var _upgrade = irandom(ds_grid_height(upgrades_grid) - 1);
+		
+		while ds_list_find_index(upgrade_list, _upgrade) != -1 {
+			var _upgrade = irandom(ds_grid_height(upgrades_grid) - 1);
+		}
+		
+		ds_list_add(upgrade_list, _upgrade);
+	}
 }

@@ -1,6 +1,9 @@
 {
   "FolderOrderSettings":[],
   "ResourceOrderSettings":[
+    {"name":"obj_lantern_of_souls","order":1,"path":"objects/obj_lantern_of_souls/obj_lantern_of_souls.yy",},
+    {"name":"spr_lantern_of_souls","order":2,"path":"sprites/spr_lantern_of_souls/spr_lantern_of_souls.yy",},
     {"name":"spr_teste_git","order":1,"path":"sprites/spr_teste_git/spr_teste_git.yy",},
+    {"name":"spr_upgrades","order":3,"path":"sprites/spr_upgrades/spr_upgrades.yy",},
   ],
 }

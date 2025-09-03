@@ -20,7 +20,7 @@ if _xx != 0 or _yy != 0 {
     dir = point_direction(x, y, x + _xx, y + _yy);
     hspd = lengthdir_x(spd, dir);
     vspd = lengthdir_y(spd, dir);
-
+	
     x += hspd;
     y += vspd;
     
@@ -31,21 +31,25 @@ if _xx != 0 or _yy != 0 {
         image_xscale = -1;
     }
 
-} else {
+} 
+else {
     sprite_index = spr_player_idle;
 }
+
 #endregion
 
-#region // sistema de Atack
-power_1_cd--;
+#region // Controla invulnerabilidade
+if invulneravel {
+    inv_timer--;
+    if (inv_timer <= 0) {
+        invulneravel = false;
+    }
+}
 
-if power_1_cd <=0 {
-	
-	var _inst = instance_create_layer(x, y, "Instances", obj_power_1);
-	
-	_inst.speed = 3;
-	_inst.direction = point_direction(x, y, mouse_x, mouse_y);
-	
-	power_1_cd = power_1_timer;
+if invulneravel {
+    var blink_on = ((inv_timer div 7) mod 2) == 0;
+    image_alpha = blink_on ? 1 : 0.25;
+} else {
+    image_alpha = 1;
 }
 #endregion

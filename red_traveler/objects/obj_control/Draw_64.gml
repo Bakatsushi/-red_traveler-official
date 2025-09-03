@@ -17,6 +17,8 @@ if global.levelUp == true {
 	for (var i = 0; i < upgrade_num; i++;){
 		
 		var _spry =  _yy + (_sprh + _buffer) * i;
+		var _y = upgrade_list[| i];
+		var _name = upgrades_grid[# Upgrade.Name, _y];
 	
 		if point_in_rectangle(_mx, _my, _xx - _sprw/2, _spry - _sprh/2, _xx + _sprw/2, _spry + _sprh/2){
 			
@@ -29,6 +31,12 @@ if global.levelUp == true {
 		}
 		
 		draw_sprite_ext(spr_level_up_hud, -1, _xx, _spry, upgrade_scale, upgrade_scale, 0, c_white, upgrade_alpha);
+		draw_sprite(spr_upgrades, _y, _xx + 13 - _sprw/2, _spry + 1);
+		
+		draw_set_font(fnt_red_traveler);
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_middle);
+		draw_text(_xx, _spry, _name);
 	}
 	exit;
 }
@@ -38,3 +46,4 @@ if global.levelUp == true {
 draw_sprite(spr_exp_hud, -1, 5, 10);
 draw_sprite_ext(spr_exp_bar, -1, 6, 11, global.exp/global.exp_max, 1, 0, c_white, 1);
 draw_text(5, 15, "Level: " + string(global.level));
+draw_text(5, 32, "Life: " + string(global.life));

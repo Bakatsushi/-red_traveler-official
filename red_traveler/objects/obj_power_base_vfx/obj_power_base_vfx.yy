@@ -1,12 +1,12 @@
 {
   "$GMObject":"",
-  "%Name":"obj_power_1_vfx",
+  "%Name":"obj_power_base_vfx",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_power_1_vfx",
+  "name":"obj_power_base_vfx",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_power_1_vfx",
-    "path":"sprites/spr_power_1_vfx/spr_power_1_vfx.yy",
+    "name":"spr_power_base_vfx",
+    "path":"sprites/spr_power_base_vfx/spr_power_base_vfx.yy",
   },
   "spriteMaskId":null,
   "visible":true,
