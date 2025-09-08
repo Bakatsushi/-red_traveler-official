@@ -33,7 +33,6 @@ if global.levelUp == true {
 		draw_sprite_ext(spr_level_up_hud, -1, _xx, _spry, upgrade_scale, upgrade_scale, 0, c_white, upgrade_alpha);
 		draw_sprite(spr_upgrades, _y, _xx + 13 - _sprw/2, _spry + 1);
 		
-		draw_set_font(fnt_red_traveler);
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
 		draw_text(_xx, _spry, _name);
