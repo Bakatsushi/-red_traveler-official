@@ -2,8 +2,9 @@
   "FolderOrderSettings":[],
   "ResourceOrderSettings":[
     {"name":"obj_lantern_of_souls","order":1,"path":"objects/obj_lantern_of_souls/obj_lantern_of_souls.yy",},
+    {"name":"spr_gun_shot","order":5,"path":"sprites/spr_gun_shot/spr_gun_shot.yy",},
+    {"name":"spr_gun","order":4,"path":"sprites/spr_gun/spr_gun.yy",},
+    {"name":"spr_lantern_of_power","order":6,"path":"sprites/spr_lantern_of_power/spr_lantern_of_power.yy",},
     {"name":"spr_lantern_of_souls","order":2,"path":"sprites/spr_lantern_of_souls/spr_lantern_of_souls.yy",},
-    {"name":"spr_teste_git","order":1,"path":"sprites/spr_teste_git/spr_teste_git.yy",},
-    {"name":"spr_upgrades","order":3,"path":"sprites/spr_upgrades/spr_upgrades.yy",},
   ],
 }

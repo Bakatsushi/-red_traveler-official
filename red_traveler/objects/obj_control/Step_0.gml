@@ -39,20 +39,28 @@ if alarm[0] <= 0 {
 
 // sitema de xp
 if global.exp >= global.exp_max {
-	global.level++;
-	global.exp = global.exp - global.exp_max;
-	global.levelUp = true;
-	
-	global.exp_max = global.exp_max + 10 + global.exp_max * .1;
-	
-	upgrade_list = ds_list_create();
-	repeat(upgrade_num){
-		var _upgrade = irandom(ds_grid_height(upgrades_grid) - 1);
-		
-		while ds_list_find_index(upgrade_list, _upgrade) != -1 {
-			var _upgrade = irandom(ds_grid_height(upgrades_grid) - 1);
-		}
-		
-		ds_list_add(upgrade_list, _upgrade);
-	}
+    global.level++;
+    global.exp = global.exp - global.exp_max;
+    global.levelUp = true;
+    
+    global.exp_max = global.exp_max + 10 + global.exp_max * .1;
+    
+    // --- Criar listas separadas
+    upgrade_list_guns = ds_list_create();
+    upgrade_list_upgrades = ds_list_create();
+
+    // --- Percorrer toda a grid e separar por categoria
+    var total = ds_grid_height(upgrades_grid);
+    for (var i = 0; i < total; i++) {
+        var _cat = upgrades_grid[# 2, i]; // pega categoria
+        switch (_cat) {
+            case "gun":
+                ds_list_add(upgrade_list_guns, i);
+                break;
+            case "upgrades":
+                ds_list_add(upgrade_list_upgrades, i);
+                break;
+        }
+    }
 }
+

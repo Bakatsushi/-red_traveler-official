@@ -14,35 +14,54 @@ if global.levelUp == true {
 	var _mx = device_mouse_x_to_gui(0);
 	var _my = device_mouse_y_to_gui(0);
 	
-	for (var i = 0; i < upgrade_num; i++;){
-		
-		var _spry =  _yy + (_sprh + _buffer) * i;
-		var _y = upgrade_list[| i];
+	for (var i = 0; i < upgrade_num; i++) {
+    
+		var _spry = _yy + (_sprh + _buffer) * i;
+
+		// Decide qual lista usar baseado no level
+		var _y;
+		if (global.level <= 2) {
+			_y = upgrade_list_guns[| i];
+		} else {
+			_y = upgrade_list_upgrades[| i];
+		}
+    
 		var _name = upgrades_grid[# Upgrade.Name, _y];
-	
-		if point_in_rectangle(_mx, _my, _xx - _sprw/2, _spry - _sprh/2, _xx + _sprw/2, _spry + _sprh/2){
-			
-			upgrade_alpha = 1;
-			upgrade_scale = 1.1;
+    
+		// Hover e clique
+		if (point_in_rectangle(_mx, _my, _xx - _sprw/2, _spry - _sprh/2, _xx + _sprw/2, _spry + _sprh/2)) {
+        
+			if (mouse_check_button_pressed(mb_left)) {
+				if (global.level <= 2) {
+					global.gun_selected = _y;
+				} else {
+                global.upgrades_selected = _y;
+				}
+				global.levelUp = false;
+			}
+        
+			upgrade_alpha[i] = 1;
+			upgrade_scale[i] = 1.1;
+		} else {
+			upgrade_alpha[i] = 0.6;
+			upgrade_scale[i] = 1;
 		}
-		else{
-			upgrade_alpha = .6;
-			upgrade_scale = 1;
-		}
-		
-		draw_sprite_ext(spr_level_up_hud, -1, _xx, _spry, upgrade_scale, upgrade_scale, 0, c_white, upgrade_alpha);
-		draw_sprite(spr_upgrades, _y, _xx + 13 - _sprw/2, _spry + 1);
-		
-		draw_set_halign(fa_center);
-		draw_set_valign(fa_middle);
-		draw_text(_xx, _spry, _name);
+    
+	    // Desenho do HUD
+	    draw_sprite_ext(spr_level_up_hud, -1, _xx, _spry, upgrade_scale[i], upgrade_scale[i], 0, c_white, upgrade_alpha[i]);
+	    draw_set_halign(fa_center);
+	    draw_set_valign(fa_middle);
+	    draw_text(_xx, _spry, _name);
 	}
-	exit;
+
 }
 #endregion
-
 
 draw_sprite(spr_exp_hud, -1, 5, 10);
 draw_sprite_ext(spr_exp_bar, -1, 6, 11, global.exp/global.exp_max, 1, 0, c_white, 1);
 draw_text(5, 15, "Level: " + string(global.level));
 draw_text(5, 32, "Life: " + string(global.life));
+
+draw_text(5, 47, string(global.gun_selected));
+draw_text(5, 62, string(global.upgrades_selected));
+
