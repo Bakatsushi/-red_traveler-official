@@ -34,7 +34,6 @@ if alarm[0] <= 0 {
 }
 #endregion
 
-// sitema de xp
 if global.exp >= global.exp_max {
     global.level++;
     global.exp = global.exp - global.exp_max;
@@ -46,7 +45,7 @@ if global.exp >= global.exp_max {
     upgrade_list_guns = ds_list_create();
     upgrade_list_upgrades = ds_list_create();
 
-    // Pecorrer toda a grid e separar por categoria
+    // Percorrer toda a grid e separar por categoria
     var total = ds_grid_height(upgrades_grid);
     for (var i = 0; i < total; i++) {
         var _cat = upgrades_grid[# 2, i]; // pega categoria
@@ -59,7 +58,24 @@ if global.exp >= global.exp_max {
                 break;
         }
     }
+ 
+    // --- Randomizar upgrades ---
+    if (ds_list_size(upgrade_list_upgrades) > 0) {
+        // embaralhar a lista
+        ds_list_shuffle(upgrade_list_upgrades);
+        
+        //pegar 3 upgrades diferentes
+        var max_choices = 3;
+        var limit = min(max_choices, ds_list_size(upgrade_list_upgrades));
+        
+        for (var j = 0; j < limit; j++) {
+            var idx  = upgrade_list_upgrades[| j]; 
+            var nome = upgrades_grid[# 0, idx]; 
+            var desc = upgrades_grid[# 1, idx];
+        }
+    }
 }
+
 
 // testes de armas
 if global.gun_selected == 1 {
