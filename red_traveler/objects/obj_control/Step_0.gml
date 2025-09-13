@@ -20,7 +20,6 @@ if alarm[0] <= 0 {
 		var _yy = choose(global.cmy - 16, global.cmy + global.cmh + 16);
 	
 		instance_create_layer(_xx, _yy, "Instances", obj_enemy_1);
-	
 	}
 	
 	if _side == 1 {
@@ -29,11 +28,9 @@ if alarm[0] <= 0 {
 		var _yy = irandom_range(global.cmy, global.cmy + global.cmh);
 		
 		instance_create_layer(_xx, _yy, "Instances", obj_enemy_1);
-	
 	}
 	
 	alarm[0] = spawnTimer;
-	
 }
 #endregion
 
@@ -45,11 +42,11 @@ if global.exp >= global.exp_max {
     
     global.exp_max = global.exp_max + 10 + global.exp_max * .1;
     
-    // --- Criar listas separadas
+    // Criar listas separadas
     upgrade_list_guns = ds_list_create();
     upgrade_list_upgrades = ds_list_create();
 
-    // --- Percorrer toda a grid e separar por categoria
+    // Pecorrer toda a grid e separar por categoria
     var total = ds_grid_height(upgrades_grid);
     for (var i = 0; i < total; i++) {
         var _cat = upgrades_grid[# 2, i]; // pega categoria
@@ -64,3 +61,22 @@ if global.exp >= global.exp_max {
     }
 }
 
+// testes de armas
+if global.gun_selected == 1 {
+	
+	global.gun_selected = -2;
+	instance_create_layer(obj_player.x, obj_player.y, "Instances", obj_gun_base);
+}
+
+if global.gun_selected == 2 || global.gun_selected == -3 {
+    
+	global.gun_selected = -3;
+    var _timer_sword_max = 60; 
+    
+    if (_timer_sword <= 0) {
+        instance_create_layer(obj_player.x + 4, obj_player.y, "Instances", obj_sword);
+        _timer_sword = _timer_sword_max;
+    }
+    
+    _timer_sword--;
+}

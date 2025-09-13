@@ -19,7 +19,8 @@ if global.levelUp == true {
 		var _spry = _yy + (_sprh + _buffer) * i;
 
 		// Decide qual lista usar baseado no level
-		var _y;
+		var _y = -1;
+		
 		if (global.level <= 2) {
 			_y = upgrade_list_guns[| i];
 		} else {
@@ -57,10 +58,12 @@ if global.levelUp == true {
 }
 #endregion
 
+draw_sprite_ext(spr_life_bar, -1, 7, 21, global.life/global.life_max, 1, 0, c_white, 1);
+draw_sprite(spr_life_hud, -1, 5, 20);
 draw_sprite(spr_exp_hud, -1, 5, 10);
 draw_sprite_ext(spr_exp_bar, -1, 6, 11, global.exp/global.exp_max, 1, 0, c_white, 1);
-draw_text(5, 15, "Level: " + string(global.level));
-draw_text(5, 32, "Life: " + string(global.life));
+
+draw_text(300, 5, "Level: " + string(global.level));
 
 draw_text(5, 47, string(global.gun_selected));
 draw_text(5, 62, string(global.upgrades_selected));

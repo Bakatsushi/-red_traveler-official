@@ -6,7 +6,7 @@ function ds_grid_add_row(){
 	return(ds_grid_height(_grid)-1);	
 }
  
-function ds_grid_add_upgrade(_name, _script, _category, _frequency, _max_level_upgrade){
+function ds_grid_add_upgrade(_name, _script, _category, _rarity, _max_level_upgrade){
 	
 	var _grid = upgrades_grid;
 	var _y = ds_grid_add_row(_grid);
@@ -14,6 +14,6 @@ function ds_grid_add_upgrade(_name, _script, _category, _frequency, _max_level_u
 	_grid[# 0, _y] = _name;
 	_grid[# 1, _y] = _script;
 	_grid[# 2, _y] = _category;
-	_grid[# 3, _y] = _frequency;
+	_grid[# 3, _y] = _rarity;
 	_grid[# 4, _y] = _max_level_upgrade;
 }

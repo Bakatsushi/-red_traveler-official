@@ -1,6 +1,8 @@
 
+// Randomizar criação de inimigos 
 randomize();
 
+// Variaves de hud
 global.life_max = 10;
 global.life = global.life_max;
 global.exp = 0;
@@ -8,8 +10,11 @@ global.exp_max = 100;
 global.level = 1;
 global.levelUp = false;
 
+// Timers 
 spawnTimer = 60 * 2;
+_timer_sword = 0;
 
+// hud de upgrades
 upgrade_num = 3;
 upgrade_alpha = 1;
 upgrade_scale = 1;
@@ -23,22 +28,24 @@ enum Upgrade {
 	Name,
 	Script,
 	Category,
-	Frequency,
+	Rarity,
 	MaxLevelUpgrade,
 	Length
 }
 
 upgrades_grid = ds_grid_create(Upgrade.Length, 0);
 //Armas base
-ds_grid_add_upgrade("Lantern_of_souls",    -1, "gun", -1, -1);
-ds_grid_add_upgrade("Base_gun",            -1, "gun", -1, -1);
-ds_grid_add_upgrade("Base_melee_atack",    -1, "gun", -1, -1);
-
+ds_grid_add_upgrade("Lantern_of_souls",      -1, "gun", -1, -1);
+ds_grid_add_upgrade("Base_gun",              -1, "gun", -1, -1);
+ds_grid_add_upgrade("Base_melee_atack",      -1, "gun", -1, -1);
+ 
 //Upgrades
-ds_grid_add_upgrade("Velocidade +",        -1, "upgrades", -1, -1);
-ds_grid_add_upgrade("Dano +",              -1, "upgrades", -1, -1);
-ds_grid_add_upgrade("Range de coleta +",   -1, "upgrades", -1, -1);
-ds_grid_add_upgrade("Modificador de Xp +", -1, "upgrades", -1, -1);
+ds_grid_add_upgrade("Velocidade +",          -1, "upgrades", "common", -1);
+ds_grid_add_upgrade("Dano +",                -1, "upgrades", "common", -1);
+ds_grid_add_upgrade("Range de coleta +",     -1, "upgrades", "common", -1);
+ds_grid_add_upgrade("Modificador de Xp +",   -1, "upgrades", "common", -1);
+ds_grid_add_upgrade("Vida Max +",            -1, "upgrades", "common", -1);
+ds_grid_add_upgrade("Numero de projeteis +", -1, "upgrades", "incommon", -1);
 
 //Melhorias
-ds_grid_add_upgrade("Lantern_of_power",    -1, "upgrades", -1, -1);
+ds_grid_add_upgrade("Lantern_of_power",      -1, "upgrades", "legendary", -1);
